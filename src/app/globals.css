@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ivory: #FAFAF8;
+    --color-cream: #F5F2EC;
+    --color-warm-gray: #E8E4DC;
+    --color-muted: #9A948C;
+    --color-charcoal: #1C1C1A;
+    --color-dark: #111110;
+    --color-copper: #A0522D;
+    --color-copper-light: #C07040;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-ivory { color: var(--color-ivory); }
+  .text-cream { color: var(--color-cream); }
+  .text-muted { color: var(--color-muted); }
+  .text-charcoal { color: var(--color-charcoal); }
+  .text-copper { color: var(--color-copper); }
+
+  .bg-ivory { background-color: var(--color-ivory); }
+  .bg-cream { background-color: var(--color-cream); }
+  .bg-warm-gray { background-color: var(--color-warm-gray); }
+  .bg-charcoal { background-color: var(--color-charcoal); }
+  .bg-dark { background-color: var(--color-dark); }
+
+  .border-warm { border-color: var(--color-warm-gray); }
+  .border-muted { border-color: rgba(26, 26, 24, 0.12); }
+
+  .tracking-widest-custom { letter-spacing: 0.15em; }
+
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+  }
+}

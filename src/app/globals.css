@@ -10,8 +10,8 @@
     --color-dark: #111110;
     --color-copper: #A0522D;
     --color-copper-light: #C07040;
-    --font-display: 'Instrument Serif', Georgia, serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: var(--font-display), 'Lora', 'Georgia', serif;
+    --font-body: var(--font-body), 'Pontano Sans', 'Inter', system-ui, sans-serif;
   }
 
   * {

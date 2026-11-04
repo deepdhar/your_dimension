@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Lora, Pontano_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/lib/config";
 
-const instrumentSerif = Instrument_Serif({
-  weight: ["400"],
+const lora = Lora({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const inter = Inter({
+const pontanoSans = Pontano_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -71,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${instrumentSerif.variable} ${inter.variable}`}>
+    <html lang="en" className={`${lora.variable} ${pontanoSans.variable}`}>
       <body className="antialiased">
         <Header />
         <main>{children}</main>

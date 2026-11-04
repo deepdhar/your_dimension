@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { CheckCircle, AlertCircle, Loader2, ChevronDown } from "lucide-react";
 
 const serviceOptions = [
   "Website (Digital Presence)",
@@ -34,6 +34,8 @@ const timelineOptions = [
 
 const inputClasses =
   "w-full font-body text-sm text-[#1C1C1A] bg-[#FAFAF8] border border-[rgba(26,26,24,0.15)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent transition-all duration-200 placeholder:text-[#9A948C]";
+const selectClasses =
+  "w-full font-body text-sm text-[#1C1C1A] bg-[#FAFAF8] border border-[rgba(26,26,24,0.15)] rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-[#A0522D] focus:border-transparent transition-all duration-200 appearance-none cursor-pointer";
 const labelClasses = "block font-body text-sm font-medium text-[#1C1C1A] mb-2";
 const errorClasses = "font-body text-xs text-red-600 mt-1.5";
 
@@ -191,21 +193,26 @@ export function ContactForm() {
           <label htmlFor="service" className={labelClasses}>
             Service Interested In <span className="text-[#A0522D]">*</span>
           </label>
-          <select
-            id="service"
-            {...register("service")}
-            className={`${inputClasses} cursor-pointer`}
-            aria-required="true"
-            aria-describedby={errors.service ? "service-error" : undefined}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select a service
-            </option>
-            {serviceOptions.map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id="service"
+              {...register("service")}
+              className={selectClasses}
+              aria-required="true"
+              aria-describedby={errors.service ? "service-error" : undefined}
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select a service
+              </option>
+              {serviceOptions.map((opt) => (
+                <option key={opt} value={opt}>{opt}</option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#6B6560]">
+              <ChevronDown size={16} />
+            </div>
+          </div>
           {errors.service && (
             <p id="service-error" className={errorClasses} role="alert">
               Please select a service
@@ -219,33 +226,43 @@ export function ContactForm() {
             <label htmlFor="budget" className={labelClasses}>
               Approximate Budget
             </label>
-            <select
-              id="budget"
-              {...register("budget")}
-              className={`${inputClasses} cursor-pointer`}
-              defaultValue=""
-            >
-              <option value="" disabled>Select a range</option>
-              {budgetOptions.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="budget"
+                {...register("budget")}
+                className={selectClasses}
+                defaultValue=""
+              >
+                <option value="" disabled>Select a range</option>
+                {budgetOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#6B6560]">
+                <ChevronDown size={16} />
+              </div>
+            </div>
           </div>
           <div>
             <label htmlFor="timeline" className={labelClasses}>
               Project Timeline
             </label>
-            <select
-              id="timeline"
-              {...register("timeline")}
-              className={`${inputClasses} cursor-pointer`}
-              defaultValue=""
-            >
-              <option value="" disabled>Select a timeline</option>
-              {timelineOptions.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="timeline"
+                {...register("timeline")}
+                className={selectClasses}
+                defaultValue=""
+              >
+                <option value="" disabled>Select a timeline</option>
+                {timelineOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#6B6560]">
+                <ChevronDown size={16} />
+              </div>
+            </div>
           </div>
         </div>
 
